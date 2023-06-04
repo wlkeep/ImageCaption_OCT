@@ -156,7 +156,7 @@ class decoder(tf.keras.Model):
   @tf.function
   def call(self,encoder_output,caption):#,decoder_h,decoder_c): #caption : (None,max_pad), encoder_output: (None,dense_dim)
     decoder_h, decoder_c = tf.zeros_like(encoder_output), tf.zeros_like(encoder_output) #decoder_h, decoder_c
-    output_array = tf.TensorArray(tf.float32,size=max_pad)
+    output_array = tf.TensorArray(tf.float32,size=self.max_pad)
     for timestep in range(self.max_pad): #iterating through all timesteps ie through max_pad
       output,decoder_h,attention_weights = self.onestepdecoder(caption[:,timestep:timestep+1], encoder_output, decoder_h)
       output_array = output_array.write(timestep,output) #timestep*batch_size*vocab_size
