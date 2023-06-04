@@ -199,7 +199,7 @@ def create_model():
   return model,tokenizer
 
 
-def greedy_search_predict(image,model):
+def greedy_search_predict(image,model,tokenizer,input_size = (224,224)):
   """
   Given paths to two x-ray images predicts the impression part of the x-ray in a greedy search algorithm
   """
@@ -283,8 +283,9 @@ def function1(image,model_tokenizer = None):
   if model_tokenizer is None:
     model_tokenizer = list(create_model())
   predicted_caption = []
-  caption = predict1(image,model_tokenizer)
-  predicted_caption.append(caption)
+  for i in zip(image):
+    caption = predict1(i,model_tokenizer)
+    predicted_caption.append(caption)
 
   return predicted_caption
 
