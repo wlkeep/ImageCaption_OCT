@@ -283,9 +283,8 @@ def function1(image,model_tokenizer = None):
   if model_tokenizer is None:
     model_tokenizer = list(create_model())
   predicted_caption = []
-  for i in zip(image):
-    caption = predict1(i,model_tokenizer)
-    predicted_caption.append(caption)
+  caption = predict1(image,model_tokenizer)
+  predicted_caption.append(caption)
 
   return predicted_caption
 
