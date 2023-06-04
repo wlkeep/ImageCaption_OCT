@@ -194,8 +194,9 @@ def create_model():
   model = tf.keras.Model(inputs = [image,caption], outputs = output)
   model_filename = './Encoder_Decoder_global_attention.h5'
   model_save = model_filename
-  print(1)
-  model.load_weights(model_save)
+  tf.keras.utils.get_custom_objects()['Image_encoder'] = Image_encoder
+  with tf.keras.utils.custom_object_scope({'Image_encoder': Image_encoder}):
+    model.load_weights(model_save)
 
   return model,tokenizer
 
