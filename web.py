@@ -13,7 +13,7 @@ st.markdown("[<small>Github</small>](https://github.com/wlkeep/Image-Caption-of-
 st.markdown("\nThis app will generate impression part of an OCT report.\nYou can upload an OCT image.")
 
 
-col = st.sidebar
+col = st.beta_container
 image = col.file_uploader("OCT image of Retina",type=['bmp','jpg'])
 
 col1,col2 = st.beta_columns(2)
