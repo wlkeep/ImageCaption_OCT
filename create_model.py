@@ -44,7 +44,7 @@ class Image_encoder(tf.keras.layers.Layer):
     return op
 
 
-def encoder(image,dense_dim = dense_dim,dropout_rate = dropout_rate):
+def encoder(image,dense_dim,dropout_rate):
   """
   Takes image1,image2
   gets the final encoded vector of these
@@ -66,7 +66,7 @@ class global_attention(tf.keras.layers.Layer):
   """
   calculate global attention
   """
-  def __init__(self,dense_dim = dense_dim):
+  def __init__(self,dense_dim):
     super().__init__()
     # Intialize variables needed for Concat score function here
     self.W1 = Dense(units = dense_dim) #weight matrix of shape enc_units*dense_dim
