@@ -31,9 +31,9 @@ def predict(image,model_tokenizer,predict_button = predict_button):
     if predict_button:
         if (image is not None):
             start = time.process_time()  
-            image = Image.open(image).convert("RGB") #converting to 3 channels
-            image = np.array(image)/255
-            st.image([image],width=300)
+            image_show = Image.open(image).convert("RGB") #converting to 3 channels
+            image_show = np.array(image_show)/255
+            st.image([image_show],width=300)
             caption = cm.function1(image,model_tokenizer)
             st.markdown(" ### **Impression:**")
             impression = st.empty()
