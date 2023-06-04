@@ -283,10 +283,8 @@ def function1(image,model_tokenizer = None):
   if model_tokenizer is None:
     model_tokenizer = list(create_model())
   predicted_caption = []
-  for i in zip(image):
-    print(i)
-    caption = predict1(str(i),model_tokenizer)
-    predicted_caption.append(caption)
+  caption = predict1(image,model_tokenizer)
+  predicted_caption.append(caption)
 
   return predicted_caption
 
@@ -298,8 +296,7 @@ def function2(true_caption,image):
   """
   model_tokenizer = list(create_model())
   predicted = pd.DataFrame(columns = ['bleu1','bleu2','bleu3','bleu4'])
-  for c,i in zip(true_caption,image):
-    caption = predict2(c,i,model_tokenizer)
-    predicted = predicted.append(caption,ignore_index = True)
+  caption = predict2(true_caption,image,model_tokenizer)
+  predicted = predicted.append(caption,ignore_index = True)
 
   return predicted
