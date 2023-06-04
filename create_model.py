@@ -201,7 +201,7 @@ def create_model():
   return model,tokenizer
 
 
-def greedy_search_predict(image,model = model1):
+def greedy_search_predict(image,model):
   """
   Given paths to two x-ray images predicts the impression part of the x-ray in a greedy search algorithm
   """
@@ -251,11 +251,6 @@ def predict1(image,model_tokenizer = None):
   """given image1 and image 2 filepaths returns the predicted caption,
   the model_tokenizer will contain stored model_weights and tokenizer 
   """
-#   try:
-#     image1 = cv2.imread(image1,cv2.IMREAD_UNCHANGED)/255 
-#     image2 = cv2.imread(image2,cv2.IMREAD_UNCHANGED)/255
-#   except:
-#     return print("Must be an image")
 
   if model_tokenizer == None:
     model,tokenizer = create_model()
@@ -271,12 +266,6 @@ def predict2(true_caption, image,model_tokenizer = None):
    returns the mean of cumulative ngram bleu scores where n=1,2,3,4,
   the model_tokenizer will contain stored model_weights and tokenizer 
   """
-  try:
-    image1 = cv2.imread(image1,cv2.IMREAD_UNCHANGED)/255 
-    image2 = cv2.imread(image2,cv2.IMREAD_UNCHANGED)/255
-  except:
-    return print("Must be an image")
-
   if model_tokenizer == None:
     model,tokenizer = create_model()
   else:
