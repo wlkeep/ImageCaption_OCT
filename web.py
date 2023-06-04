@@ -34,7 +34,7 @@ def predict(image,model_tokenizer,predict_button = predict_button):
             image = Image.open(image).convert("RGB") #converting to 3 channels
             image = np.array(image)/255
             st.image([image],width=300)
-            caption = cm.function1([image],model_tokenizer)
+            caption = cm.function1(image,model_tokenizer)
             st.markdown(" ### **Impression:**")
             impression = st.empty()
             impression.write(caption[0])
