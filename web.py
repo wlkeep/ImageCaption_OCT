@@ -13,10 +13,10 @@ st.markdown("[<small>Github</small>](https://github.com/wlkeep/Image-Caption-of-
 st.markdown("\nThis app will generate impression part of an OCT report.\nYou can upload an OCT image.")
 
 
-col1,col2 = st.beta_columns(2)
+col1,col2 = st.columns(2)
 image = col1.file_uploader("OCT image of Retina",type=['bmp','jpg'])
 
-col1,col2 = st.beta_columns(2)
+col1,col2 = st.columns(2)
 predict_button = col1.button('Predict on uploaded files')
 test_data = col2.button('Predict on sample data')
 
