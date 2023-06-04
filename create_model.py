@@ -216,6 +216,7 @@ def greedy_search_predict(image,model,tokenizer,input_size = (224,224)):
   decoder_h,decoder_c = tf.zeros_like(enc_op),tf.zeros_like(enc_op)
   a = []
   pred = []
+  max_pad = 15
   for i in range(max_pad):
     if i==0: #if first word
       caption = np.array(tokenizer.texts_to_sequences(['<CLS>'])) #shape: (1,1)
