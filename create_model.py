@@ -1,7 +1,6 @@
 import joblib
 import os
 import tensorflow as tf
-import tensorflow as tf
 from tensorflow.keras.layers import Dense,GlobalAveragePooling2D, Input, Embedding, LSTM,Dot,Reshape,Concatenate,BatchNormalization, GlobalMaxPooling2D, Dropout, Add, MaxPooling2D, GRU, AveragePooling2D
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -195,7 +194,8 @@ def create_model():
   model = tf.keras.Model(inputs = [image,caption], outputs = output)
   model_filename = './Encoder_Decoder_global_attention.h5'
   model_save = model_filename
-  model.load_weights(model_save, custom_objects={'Image_encoder': Image_encoder})
+  print(1)
+  model.load_weights(model_save)
 
   return model,tokenizer
 
