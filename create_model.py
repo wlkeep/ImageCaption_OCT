@@ -146,7 +146,7 @@ class decoder(tf.keras.Model):
   """
   Decodes the encoder output and caption
   """
-  def __init__(self, max_pad, embedding_dim,dense_dim,score_fun='general',batch_size,vocab_size):
+  def __init__(self, max_pad, embedding_dim,dense_dim,batch_size,vocab_size,score_fun='general'):
     super().__init__()
     self.onestepdecoder = One_Step_Decoder(vocab_size = vocab_size, embedding_dim = embedding_dim, max_pad = max_pad, dense_dim = dense_dim)
     self.output_array = tf.TensorArray(tf.float32,size=max_pad)
