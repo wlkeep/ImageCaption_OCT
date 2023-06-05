@@ -203,7 +203,6 @@ def greedy_search_predict(image,model,tokenizer,input_size = (224,224)):
   """
   Given paths to two x-ray images predicts the impression part of the x-ray in a greedy search algorithm
   """
-  image = cv2.imread(image)/255 
   image = tf.expand_dims(cv2.resize(image,input_size,interpolation = cv2.INTER_NEAREST),axis=0) #introduce batch and resize
   image = model.get_layer('image_encoder')(image)
   image_norm = model.get_layer('batch_normalization')(image)
