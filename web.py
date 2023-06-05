@@ -4,7 +4,6 @@ import numpy as np
 import time
 from PIL import Image
 import create_model as cm
-import cv2
 
 
 st.title("OCT of Retina Report Generator")
@@ -49,7 +48,6 @@ def predict_sample(model_tokenizer,folder = './data/image'):
     no_files = len(os.listdir(folder))
     index = np.random.randint(1,no_files)
     image = os.path.join(folder,os.listdir(folder)[index-1])
-    image = cv2.imread(image)/255
     predict(image,model_tokenizer,True)
 
 model_tokenizer = create_model()
