@@ -4,6 +4,7 @@ import numpy as np
 import time
 from PIL import Image
 import create_model as cm
+import cv2
 
 
 st.title("OCT of Retina Report Generator")
@@ -34,7 +35,7 @@ def predict(image,model_tokenizer,predict_button = predict_button):
             image_show = Image.open(image).convert("RGB") #converting to 3 channels
             image_show = np.array(image_show)/255
             st.image([image_show],width=300)
-            caption = cm.function1(image,model_tokenizer)
+            caption = cm.function1(image_show,model_tokenizer)
             st.markdown(" ### **Impression:**")
             impression = st.empty()
             impression.write(caption[0])
@@ -48,6 +49,7 @@ def predict_sample(model_tokenizer,folder = './data/image'):
     no_files = len(os.listdir(folder))
     index = np.random.randint(1,no_files)
     image = os.path.join(folder,os.listdir(folder)[index-1])
+    image = cv2.imread(image)/255
     predict(image,model_tokenizer,True)
 
 model_tokenizer = create_model()
